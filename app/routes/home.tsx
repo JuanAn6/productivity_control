@@ -12,13 +12,13 @@ const quickStats = [
     icon: TrendingUp,
   },
   {
-    title: "Eventos",
+    title: "Events",
     value: "1,284",
     change: "+18",
     icon: Activity,
   },
   {
-    title: "Alertas",
+    title: "Alerts",
     value: "7",
     change: "-3",
     icon: Bell,
@@ -41,9 +41,9 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-semibold">{item.value}</div>
-                <p className="text-xs text-muted-foreground">Ultimos 7 dias</p>
+                <p className="text-xs text-muted-foreground">Last 7 days</p>
                 <Badge className="mt-3" variant="secondary">
-                  {item.change} vs semana pasada
+                  {item.change} vs last week
                 </Badge>
               </CardContent>
             </Card>
@@ -53,32 +53,28 @@ export default function Home() {
 
       <Card className="shadow-none">
         <CardHeader>
-          <CardTitle>Resumen rapido</CardTitle>
-          <CardDescription>
-            Un vistazo a las prioridades y recordatorios del equipo.
-          </CardDescription>
+          <CardTitle>Quick summary</CardTitle>
+          <CardDescription>A snapshot of the team priorities and reminders.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border bg-muted/30 p-4">
             <div>
-              <p className="text-sm font-medium">Pendiente de aprobacion</p>
-              <p className="text-xs text-muted-foreground">
-                3 solicitudes requieren revision hoy.
-              </p>
+              <p className="text-sm font-medium">Pending approval</p>
+              <p className="text-xs text-muted-foreground">3 requests need review today.</p>
             </div>
             <Button size="sm" variant="secondary" type="button">
-              Revisar solicitudes
+              Review requests
             </Button>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border bg-muted/30 p-4">
             <div>
-              <p className="text-sm font-medium">Campana activa</p>
+              <p className="text-sm font-medium">Active campaign</p>
               <p className="text-xs text-muted-foreground">
-                2 automatizaciones finalizan esta semana.
+                2 automations are ending this week.
               </p>
             </div>
             <Button size="sm" variant="outline" type="button">
-              Ver campanas
+              View campaigns
             </Button>
           </div>
         </CardContent>

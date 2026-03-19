@@ -6,45 +6,45 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 const cards = [
   {
-    title: "Campana Aurora",
-    description: "Lanzamiento segmentado para usuarios activos.",
+    title: "Aurora Campaign",
+    description: "Segmented launch for active users.",
     metric: "48% CTR",
     tag: "Marketing",
     icon: Sparkles,
   },
   {
-    title: "Backups diarios",
-    description: "Ultimo respaldo completado hace 3 horas.",
+    title: "Daily backups",
+    description: "Last backup completed 3 hours ago.",
     metric: "99.9% OK",
-    tag: "Infra",
+    tag: "Infrastructure",
     icon: Cloud,
   },
   {
     title: "Roadmap Q2",
-    description: "11 tareas en progreso, 3 bloqueadas.",
+    description: "11 tasks in progress, 3 blocked.",
     metric: "14/22",
-    tag: "Producto",
+    tag: "Product",
     icon: Folder,
   },
   {
-    title: "Agenda del equipo",
-    description: "Proxima reunion general el jueves.",
+    title: "Team agenda",
+    description: "Next all-hands meeting on Thursday.",
     metric: "09:30",
     tag: "People",
     icon: Calendar,
   },
   {
-    title: "NPS semanal",
-    description: "Respuestas nuevas en los ultimos 7 dias.",
+    title: "Weekly NPS",
+    description: "New responses in the last 7 days.",
     metric: "62 pts",
-    tag: "Clientes",
+    tag: "Customers",
     icon: Sparkles,
   },
   {
-    title: "Estado del pipeline",
-    description: "4 deals entran en revision final.",
+    title: "Pipeline status",
+    description: "4 deals are entering final review.",
     metric: "$124K",
-    tag: "Ventas",
+    tag: "Sales",
     icon: Folder,
   },
 ]
@@ -54,13 +54,13 @@ export default function Cards() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="text-lg font-semibold">Tarjetas de informacion</h2>
+          <h2 className="text-lg font-semibold">Information cards</h2>
           <p className="text-sm text-muted-foreground">
-            Ejemplo de cards con contenido aleatorio y etiquetas.
+            Example cards with sample content and tags.
           </p>
         </div>
         <Button size="sm" variant="secondary" type="button">
-          Ver reporte completo
+          View full report
         </Button>
       </div>
 
@@ -82,7 +82,7 @@ export default function Cards() {
               <CardContent className="flex items-center justify-between">
                 <span className="text-xl font-semibold">{item.metric}</span>
                 <Button size="sm" variant="ghost" type="button">
-                  Ver detalles
+                  View details
                 </Button>
               </CardContent>
             </Card>

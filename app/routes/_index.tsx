@@ -14,7 +14,7 @@ export default function Index() {
   if (checking) {
     return (
       <div className="flex min-h-svh items-center justify-center text-sm text-muted-foreground">
-        Cargando...
+        Loading...
       </div>
     )
   }

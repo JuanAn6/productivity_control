@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react"
 import { CalendarDays } from "lucide-react"
 import { format } from "date-fns"
-import { es } from "date-fns/locale"
+import { enUS } from "date-fns/locale"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -14,50 +14,50 @@ import { cn } from "@/lib/utils"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue,} from "@/components/ui/select"
 
 const diningHalls = [
-  "Comedor Central",
-  "Comedor Infantil",
-  "Comedor Secundaria",
+  "Main Dining Hall",
+  "Children's Dining Hall",
+  "Secondary Dining Hall",
 ]
 
 const menus = [
   {
     id: "balanceado",
-    name: "Menu balanceado",
-    description: "Opciones suaves con vegetales frescos y proteina ligera.",
+    name: "Balanced menu",
+    description: "Light options with fresh vegetables and lean protein.",
     calories: "650 kcal",
-    tags: ["Vegetariano", "Sin frituras"],
+    tags: ["Vegetarian", "No fried food"],
     items: [
-      { label: "Entrante", detail: "Crema de calabaza con crujiente de pan" },
-      { label: "Plato principal", detail: "Pollo al horno con papas y ensalada" },
-      { label: "Postre", detail: "Fruta de temporada y yogur natural" },
+      { label: "Starter", detail: "Pumpkin cream soup with crispy bread" },
+      { label: "Main course", detail: "Baked chicken with potatoes and salad" },
+      { label: "Dessert", detail: "Seasonal fruit and plain yogurt" },
     ],
-    allergens: ["Gluten", "Lactosa"],
+    allergens: ["Gluten", "Lactose"],
   },
   {
     id: "energia",
-    name: "Menu energetico",
-    description: "Ideal para dias de actividades deportivas y recreo largo.",
+    name: "Energy menu",
+    description: "Ideal for sports days and longer recess breaks.",
     calories: "820 kcal",
-    tags: ["Proteico", "Alto en fibra"],
+    tags: ["High protein", "High fiber"],
     items: [
-      { label: "Entrante", detail: "Ensalada de garbanzos con tomate" },
-      { label: "Plato principal", detail: "Pasta integral con salsa de carne" },
-      { label: "Postre", detail: "Compota de manzana con canela" },
+      { label: "Starter", detail: "Chickpea salad with tomato" },
+      { label: "Main course", detail: "Whole wheat pasta with meat sauce" },
+      { label: "Dessert", detail: "Apple compote with cinnamon" },
     ],
-    allergens: ["Gluten", "Legumbres"],
+    allergens: ["Gluten", "Legumes"],
   },
   {
     id: "suave",
-    name: "Menu suave",
-    description: "Platos sencillos con sabores tradicionales y digestivos.",
+    name: "Light menu",
+    description: "Simple dishes with traditional and easy-to-digest flavors.",
     calories: "590 kcal",
-    tags: ["Bajo en sal", "Suave"],
+    tags: ["Low salt", "Light"],
     items: [
-      { label: "Entrante", detail: "Sopa de verduras con arroz" },
-      { label: "Plato principal", detail: "Tortilla de papas con ensalada" },
-      { label: "Postre", detail: "Gelatina de frutas" },
+      { label: "Starter", detail: "Vegetable soup with rice" },
+      { label: "Main course", detail: "Spanish omelet with salad" },
+      { label: "Dessert", detail: "Fruit jelly" },
     ],
-    allergens: ["Huevo", "Lactosa"],
+    allergens: ["Egg", "Lactose"],
   },
 ]
 
@@ -71,31 +71,31 @@ export default function Reservas() {
   }, [selectedMenuId])
 
   const formattedDate = selectedDate
-    ? format(selectedDate, "PPP", { locale: es })
-    : "Sin fecha"
+    ? format(selectedDate, "PPP", { locale: enUS })
+    : "No date"
 
   return (
     <div className="grid gap-6 lg:grid-cols-2">
       <Card className="shadow-none">
         <CardHeader>
-          <CardTitle>Reserva de comedor</CardTitle>
+          <CardTitle>Dining reservation</CardTitle>
           <CardDescription>
-            Completa los datos para asegurar un cupo y elegir el menu del dia.
+            Fill in the details to reserve a spot and choose the menu of the day.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="grid gap-2">
-            <Label htmlFor="dining-hall">Comedor</Label>
+            <Label htmlFor="dining-hall">Dining hall</Label>
             <Select
               value={selectedHall}
               onValueChange={(value) => setSelectedHall(value)}
             >
               <SelectTrigger className="w-full ">
-                <SelectValue placeholder="Selecciona el comedor" />
+                <SelectValue placeholder="Select a dining hall" />
               </SelectTrigger>
               <SelectContent >
                 <SelectGroup>
-                  <SelectLabel>Comedor</SelectLabel>
+                  <SelectLabel>Dining hall</SelectLabel>
                   {diningHalls.map((hall) => (
                     <SelectItem key={hall} value={hall}>{hall}</SelectItem>
                   ))}
@@ -104,7 +104,7 @@ export default function Reservas() {
             </Select>
           </div>
           <div className="grid gap-2">
-            <Label>Dia reserva</Label>
+            <Label>Reservation day</Label>
             <Popover>
               <PopoverTrigger asChild>
                 <Button
@@ -116,8 +116,8 @@ export default function Reservas() {
                   )}
                 >
                   {selectedDate
-                    ? format(selectedDate, "PPP", { locale: es })
-                    : "Selecciona una fecha"}
+                    ? format(selectedDate, "PPP", { locale: enUS })
+                    : "Select a date"}
                   <CalendarDays className="size-4 opacity-60" />
                 </Button>
               </PopoverTrigger>
@@ -126,7 +126,7 @@ export default function Reservas() {
                   mode="single"
                   selected={selectedDate}
                   onSelect={(date) => setSelectedDate(date)}
-                  locale={es}
+                  locale={enUS}
                 />
               </PopoverContent>
             </Popover>
@@ -134,9 +134,9 @@ export default function Reservas() {
 
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <Label>Menu disponible</Label>
+              <Label>Available menu</Label>
               <span className="text-xs text-muted-foreground">
-                {menus.length} opciones hoy
+                {menus.length} options today
               </span>
             </div>
             <div className="grid gap-3">
@@ -183,9 +183,9 @@ export default function Reservas() {
           </div>
 
           <div className="flex flex-wrap gap-2">
-            <Button type="button">Confirmar reserva</Button>
+            <Button type="button">Confirm reservation</Button>
             <Button type="button" variant="outline">
-              Guardar borrador
+              Save draft
             </Button>
           </div>
         </CardContent>
@@ -193,15 +193,15 @@ export default function Reservas() {
 
       <Card className="shadow-none">
         <CardHeader>
-          <CardTitle>Resumen del menu</CardTitle>
+          <CardTitle>Menu summary</CardTitle>
           <CardDescription>
-            Vista previa con los platos elegidos para el dia seleccionado.
+            Preview of the dishes selected for the chosen day.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="rounded-xl border bg-muted/30 p-4">
             <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              Menu seleccionado
+              Selected menu
             </p>
             <div className="mt-2 flex flex-wrap items-start justify-between gap-3">
               <div>
@@ -238,11 +238,11 @@ export default function Reservas() {
 
           <div className="grid gap-2 rounded-xl border bg-background/60 p-4 text-sm">
             <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Comedor</span>
+              <span className="text-muted-foreground">Dining hall</span>
               <span className="font-medium text-foreground">{selectedHall}</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Dia</span>
+              <span className="text-muted-foreground">Day</span>
               <span
                 className={cn(
                   "font-medium",
@@ -253,8 +253,8 @@ export default function Reservas() {
               </span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Porciones estimadas</span>
-              <span className="font-medium text-foreground">120 raciones</span>
+              <span className="text-muted-foreground">Estimated portions</span>
+              <span className="font-medium text-foreground">120 servings</span>
             </div>
           </div>
         </CardContent>

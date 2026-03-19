@@ -16,20 +16,20 @@ import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
 
 const navItems = [
-  { label: "Home", to: "/home", icon: Home, description: "Resumen general" },
+  { label: "Home", to: "/home", icon: Home, description: "Overview" },
   {
-    label: "Reservas",
+    label: "Reservations",
     to: "/reservas",
     icon: UtensilsCrossed,
-    description: "Comedor escolar",
+    description: "School dining",
   },
-  { label: "Tabla", to: "/tabla", icon: Table2, description: "Data table" },
-  { label: "Cards", to: "/cards", icon: LayoutGrid, description: "Tarjetas" },
+  { label: "Table", to: "/tabla", icon: Table2, description: "Data table" },
+  { label: "Cards", to: "/cards", icon: LayoutGrid, description: "Cards" },
   {
-    label: "Calendario",
+    label: "Calendar",
     to: "/calendario",
     icon: Calendar,
-    description: "Vista mensual",
+    description: "Monthly view",
   },
   {
     label: "Notion",
@@ -46,7 +46,7 @@ export default function BaseLayout() {
 
   const activeLabel = useMemo(() => {
     const current = navItems.find((item) => location.pathname.startsWith(item.to))
-    return current?.label ?? "Panel"
+    return current?.label ?? "Dashboard"
   }, [location.pathname])
 
   useEffect(() => {
@@ -65,8 +65,8 @@ export default function BaseLayout() {
 
   if (checking) {
     return (
-      <div className="flex min-h-svh items-center justify-center text-sm text-muted-foreground">
-        Cargando...
+        <div className="flex min-h-svh items-center justify-center text-sm text-muted-foreground">
+        Loading...
       </div>
     )
   }
@@ -81,7 +81,7 @@ export default function BaseLayout() {
             </div>
             <div>
               <p className="text-sm font-semibold text-sidebar-foreground">Base React</p>
-              <p className="text-xs text-muted-foreground">Panel interno</p>
+              <p className="text-xs text-muted-foreground">Internal dashboard</p>
             </div>
           </div>
 
@@ -120,7 +120,7 @@ export default function BaseLayout() {
             <div>
               <h1 className="mt-2 text-2xl font-semibold text-foreground">{activeLabel}</h1>
               <p className="text-sm text-muted-foreground">
-                Gestiona los datos principales y revisa el estado general del proyecto.
+                Manage key data and review the overall project status.
               </p>
             </div>
             <div className="mt-auto flex items-center gap-3 rounded-xl border bg-background/60 p-3">
@@ -136,7 +136,7 @@ export default function BaseLayout() {
                 size="icon"
                 type="button"
                 onClick={handleLogout}
-                aria-label="Cerrar sesion"
+                aria-label="Log out"
               >
                 <LogOut className="size-4" />
               </Button>

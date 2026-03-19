@@ -8,13 +8,13 @@ export default function Calendario() {
     <div className="space-y-4 ">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="text-lg font-semibold">Calendario mensual</h2>
+          <h2 className="text-lg font-semibold">Monthly calendar</h2>
           <p className="text-sm text-muted-foreground">
-            Vista de ejemplo con FullCalendar en modo mes.
+            Example view using FullCalendar in month mode.
           </p>
         </div>
         <Button size="sm" variant="outline" type="button">
-          Sin acciones
+          No actions
         </Button>
       </div>
 

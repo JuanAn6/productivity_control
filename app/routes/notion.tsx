@@ -8,25 +8,26 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 const projectBriefContent = `
   <h2>Project brief</h2>
-  <p>Esta pagina muestra una integracion reutilizable de TipTap con una experiencia inspirada en Notion.</p>
-  <p>Puedes editar el contenido, aplicar formato y despues reutilizar el mismo componente en otras pantallas pasandole el HTML desde fuera.</p>
+  <p>This page shows a reusable TipTap integration with a Notion-inspired experience.</p>
+  <p>You can edit the content, apply formatting, and then reuse the same component in other screens by passing HTML in from outside.</p>
   <ul>
-    <li>Resumen ejecutivo para stakeholders</li>
-    <li>Lista de prioridades para la semana</li>
-    <li>Notas rapidas de producto</li>
+    <li>Executive summary for stakeholders</li>
+    <li>Weekly priority list</li>
+    <li>Quick product notes</li>
   </ul>
+  <p>Try <strong>/</strong> to open commands and <strong>@</strong> to insert mentions.</p>
   <blockquote>
-    El contenido inicial entra por props y el componente emite cambios hacia fuera.
+    Initial content comes in through props and the component emits changes outward.
   </blockquote>
 `
 
 const meetingNotesContent = `
   <h2>Meeting notes</h2>
-  <p><strong>Objetivo:</strong> validar el flujo de contenidos largos en el panel interno.</p>
+  <p><strong>Goal:</strong> validate the long-form content workflow inside the internal dashboard.</p>
   <ol>
-    <li>Revisar bloques de texto enriquecido.</li>
-    <li>Definir estructura de plantillas reutilizables.</li>
-    <li>Confirmar integracion con otras vistas del panel.</li>
+    <li>Review rich text blocks.</li>
+    <li>Define the reusable template structure.</li>
+    <li>Confirm integration with other dashboard views.</li>
   </ol>
   <pre><code>const reusable = true
 const editor = "tiptap"</code></pre>
@@ -43,11 +44,14 @@ export default function NotionPage() {
             <div className="mb-2 flex items-center gap-2">
               <Badge variant="secondary">TipTap</Badge>
               <Badge variant="outline">Notion-like</Badge>
+              <Badge variant="outline">Slash commands</Badge>
+              <Badge variant="outline">Mentions</Badge>
             </div>
-            <h2 className="text-lg font-semibold">Editor reutilizable</h2>
+            <h2 className="text-lg font-semibold">Reusable editor</h2>
             <p className="text-sm text-muted-foreground">
-              El contenido se recibe desde fuera y tambien puede sincronizarse hacia el
-              contenedor con `onChange`.
+              Content is received from outside and can also sync back to the parent
+              through `onChange`. It also supports floating menus, checklists, links,
+              alignment, images, and quick commands.
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -58,7 +62,7 @@ export default function NotionPage() {
               onClick={() => setContent(meetingNotesContent)}
             >
               <FileText className="size-4" />
-              Cargar meeting notes
+              Load meeting notes
             </Button>
             <Button
               type="button"
@@ -67,7 +71,7 @@ export default function NotionPage() {
               onClick={() => setContent(projectBriefContent)}
             >
               <RotateCcw className="size-4" />
-              Restaurar ejemplo
+              Restore example
             </Button>
           </div>
         </div>
@@ -75,7 +79,7 @@ export default function NotionPage() {
         <TiptapEditor
           content={content}
           onChange={setContent}
-          placeholder="Empieza a escribir como en Notion..."
+          placeholder="Start writing like in Notion..."
         />
       </div>
 
@@ -84,19 +88,24 @@ export default function NotionPage() {
           <div className="mb-3 flex size-11 items-center justify-center rounded-2xl bg-muted">
             <Sparkles className="size-5 text-muted-foreground" />
           </div>
-          <CardTitle>Componente listo para reutilizar</CardTitle>
+          <CardTitle>Component ready to reuse</CardTitle>
           <CardDescription>
-            Puedes usar este mismo editor en otras rutas pasandole un HTML inicial distinto.
+            You can use this same editor in other routes by passing a different initial
+            HTML value.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4 text-sm text-muted-foreground">
           <div className="rounded-xl border bg-muted/30 p-4">
-            <p className="font-medium text-foreground">Props principales</p>
+            <p className="font-medium text-foreground">Main props</p>
             <p>`content`, `onChange`, `placeholder`, `editable`, `autofocus`</p>
           </div>
           <div className="rounded-xl border bg-muted/30 p-4">
-            <p className="font-medium text-foreground">Uso esperado</p>
-            <p>Plantillas, notas internas, briefs, actas y bloques de contenido editable.</p>
+            <p className="font-medium text-foreground">Added interactions</p>
+            <p>`/` for blocks, `@` for mentions, bubble menu, and floating menu.</p>
+          </div>
+          <div className="rounded-xl border bg-muted/30 p-4">
+            <p className="font-medium text-foreground">Expected usage</p>
+            <p>Templates, internal notes, briefs, meeting notes, and editable content blocks.</p>
           </div>
         </CardContent>
       </Card>

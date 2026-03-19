@@ -100,7 +100,7 @@ export default function Login() {
 
           <CardFooter className="flex-col gap-2">
             <Button className="w-full" disabled={loading} type="submit">
-              {loading ? "Entrando..." : "Login"}
+              {loading ? "Signing in..." : "Login"}
             </Button>
             <Button className="w-full" type="button" variant="outline">
               Login with Google

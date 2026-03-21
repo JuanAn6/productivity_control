@@ -10,5 +10,6 @@ export default [
     route("cards", "routes/cards.tsx"),
     route("calendario", "routes/calendario.tsx"),
     route("notion", "routes/notion.tsx"),
+    route("tasks", "routes/tasks.tsx"),
   ]),
 ] satisfies RouteConfig

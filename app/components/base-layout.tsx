@@ -8,6 +8,7 @@ import {
   LogOut,
   Table2,
   UtensilsCrossed,
+  ListChecks,
 } from "lucide-react"
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
@@ -36,6 +37,12 @@ const navItems = [
     to: "/notion",
     icon: FilePenLine,
     description: "TipTap editor",
+  },
+  {
+    label: "Tasks",
+    to: "/tasks",
+    icon: ListChecks,
+    description: "Tasks list",
   },
 ]
 

@@ -12,101 +12,124 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { CustomPagination } from "~/components/pagination";
-
-const issues = [
-  {
-    id: 1,
-    status: "In progress",
-    name: "20025 Bad request of field",
-    type: "Bug",
-    tags: ["Priority 1", "Bug"],
-    date: "2026-03-20",
-  },
-  {
-    id: 2,
-    status: "Open",
-    name: "20026 Login endpoint returns 500",
-    type: "Bug",
-    tags: ["Priority 1", "Backend"],
-    date: "2026-03-18",
-  },
-  {
-    id: 3,
-    status: "Closed",
-    name: "20027 Improve dashboard loading time",
-    type: "Feature",
-    tags: ["Priority 2", "Frontend"],
-    date: "2026-03-15",
-  },
-  {
-    id: 4,
-    status: "In review",
-    name: "20028 Refactor user service",
-    type: "Task",
-    tags: ["Tech Debt"],
-    date: "2026-03-19",
-  },
-  {
-    id: 5,
-    status: "Open",
-    name: "20029 Add password strength validation",
-    type: "Feature",
-    tags: ["Priority 2", "Security"],
-    date: "2026-03-17",
-  },
-  {
-    id: 6,
-    status: "Blocked",
-    name: "20030 Payment gateway timeout issue",
-    type: "Bug",
-    tags: ["Priority 1", "External"],
-    date: "2026-03-16",
-  },
-  {
-    id: 7,
-    status: "Closed",
-    name: "20031 Update dependencies",
-    type: "Task",
-    tags: ["Maintenance"],
-    date: "2026-03-10",
-  },
-  {
-    id: 8,
-    status: "In progress",
-    name: "20032 Mobile layout fixes",
-    type: "Bug",
-    tags: ["Priority 2", "UI"],
-    date: "2026-03-21",
-  },
-  {
-    id: 9,
-    status: "Open",
-    name: "20033 Add dark mode support",
-    type: "Feature",
-    tags: ["UX"],
-    date: "2026-03-14",
-  },
-  {
-    id: 10,
-    status: "In review",
-    name: "20034 Optimize database queries",
-    type: "Task",
-    tags: ["Performance"],
-    date: "2026-03-19",
-  }
-];
-
-const statusVariant = (status: string) => {
-  if (status === "Paid") return "secondary"
-  if (status === "Pending") return "muted"
-  return "outline"
-}
-
-const onPageChange = (newPage: number) => {
-  console.log('page change: ', newPage);
-}
+import { useEffect, useState } from "react";
 
 export default function Tabla() {
+  const issuesRaw = [
+    {
+      id: 1,
+      status: "In progress",
+      name: "20025 Bad request of field",
+      type: "Bug",
+      tags: ["Priority 1", "Bug"],
+      date: "2026-03-20",
+    },
+    {
+      id: 2,
+      status: "Open",
+      name: "20026 Login endpoint returns 500",
+      type: "Bug",
+      tags: ["Priority 1", "Backend"],
+      date: "2026-03-18",
+    },
+    {
+      id: 3,
+      status: "Closed",
+      name: "20027 Improve dashboard loading time",
+      type: "Feature",
+      tags: ["Priority 2", "Frontend"],
+      date: "2026-03-15",
+    },
+    {
+      id: 4,
+      status: "In review",
+      name: "20028 Refactor user service",
+      type: "Task",
+      tags: ["Tech Debt"],
+      date: "2026-03-19",
+    },
+    {
+      id: 5,
+      status: "Open",
+      name: "20029 Add password strength validation",
+      type: "Feature",
+      tags: ["Priority 2", "Security"],
+      date: "2026-03-17",
+    },
+    {
+      id: 6,
+      status: "Blocked",
+      name: "20030 Payment gateway timeout issue",
+      type: "Bug",
+      tags: ["Priority 1", "External"],
+      date: "2026-03-16",
+    },
+    {
+      id: 7,
+      status: "Closed",
+      name: "20031 Update dependencies",
+      type: "Task",
+      tags: ["Maintenance"],
+      date: "2026-03-10",
+    },
+    {
+      id: 8,
+      status: "In progress",
+      name: "20032 Mobile layout fixes",
+      type: "Bug",
+      tags: ["Priority 2", "UI"],
+      date: "2026-03-21",
+    },
+    {
+      id: 9,
+      status: "Open",
+      name: "20033 Add dark mode support",
+      type: "Feature",
+      tags: ["UX"],
+      date: "2026-03-14",
+    },
+    {
+      id: 10,
+      status: "In review",
+      name: "20034 Optimize database queries",
+      type: "Task",
+      tags: ["Performance"],
+      date: "2026-03-19",
+    }
+  ];
+
+  const [issues, setIssues] = useState<typeof issuesRaw>([]);
+  const [page, setPage] = useState(1);
+  const [itemsXPage, setItemsXPage] = useState(5);
+
+  const statusVariant = (status: string) => {
+    if (status === "Paid") return "secondary"
+    if (status === "Pending") return "muted"
+    return "outline"
+  }
+
+
+
+  const onPageChange = (newPage: number) => {
+    setPage(newPage);
+    //TODO:Change this for ajax
+
+    fetchData(newPage);
+
+  };
+
+  const fetchData = (newPage: number) =>{
+    let startPage = (newPage-1)*itemsXPage;
+    let endPage = startPage+itemsXPage;
+    setIssues(issuesRaw.slice(startPage, endPage));
+  }
+
+
+  useEffect(()=>{ 
+    fetchData(1)
+  },[]);
+
+
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -154,9 +177,9 @@ export default function Tabla() {
         </TableBody>
       </Table>
       <CustomPagination 
-        itemsLength={issues.length}
-        itemsPerPage={5}
-        currentPage={1}
+        itemsLength={issuesRaw.length}
+        itemsPerPage={itemsXPage}
+        currentPage={page}
         onPageChange={onPageChange}
       />
     </div>

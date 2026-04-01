@@ -9,6 +9,7 @@ import {
   Table2,
   UtensilsCrossed,
   ListChecks,
+  User
 } from "lucide-react"
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
@@ -43,6 +44,12 @@ const navItems = [
     to: "/tasks",
     icon: ListChecks,
     description: "Tasks list",
+  },
+  {
+    label: "Users",
+    to: "/users/list",
+    icon: User,
+    description: "Users list",
   },
 ]
 

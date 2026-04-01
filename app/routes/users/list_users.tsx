@@ -99,7 +99,7 @@ export default function Tabla() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="text-lg font-semibold">Recent orders</h2>
+          <h2 className="text-lg font-semibold">Users list</h2>
           <p className="text-sm text-muted-foreground">
             Example data table using the UI components.
           </p>
@@ -128,7 +128,7 @@ export default function Tabla() {
         <TableBody>
           {items.map((row) => (
             <TableRow key={row.id}>
-              <TableCell>
+              <TableCell className="p-1">
                 <Avatar>
                   <AvatarImage src={row.profile} sizes="small"/>
                   <AvatarFallback>{row.lastName.slice(0,1)}{row.name.slice(0,1)}</AvatarFallback>

@@ -130,7 +130,7 @@ export default function Tabla() {
             <TableRow key={row.id}>
               <TableCell className="p-1">
                 <Avatar>
-                  <AvatarImage src={row.profile} sizes="small"/>
+                  {row.profile && <AvatarImage src={row.profile} sizes="small"/>}
                   <AvatarFallback>{row.lastName.slice(0,1)}{row.name.slice(0,1)}</AvatarFallback>
                 </Avatar>
               </TableCell>

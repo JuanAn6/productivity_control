@@ -163,7 +163,7 @@ export default function UserForm() {
               />
             </div>
 
-            <div className="grid gap-2">
+            <div className="flex flex-col gap-2">
               <Label htmlFor="password">Password</Label>
               <Input
                 id="password"
@@ -186,7 +186,7 @@ export default function UserForm() {
               ) : null}
             </div>
 
-            <div className="grid gap-2">
+            <div className="flex flex-col gap-2">
               <Label htmlFor="role">Role</Label>
               <Select
                 value={formValues.role}

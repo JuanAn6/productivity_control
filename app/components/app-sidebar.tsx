@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
+import { NavUser } from "./nav-user"
 
 const navItems = [
   { label: "Home", to: "/home", icon: Home, description: "Overview" },
@@ -23,6 +24,12 @@ export function AppSidebar() {
   const location = useLocation()
   const [checking, setChecking] = useState(true)
 
+  const user = {
+    name : 'Juan',
+    email : 'juan@test.net',
+    avatar: '',
+  }
+
   const activeLabel = useMemo(() => {
     const current = navItems.find((item) => location.pathname.startsWith(item.to))
     return current?.label ?? "Dashboard"
@@ -37,10 +44,6 @@ export function AppSidebar() {
     setChecking(false)
   }, [navigate])
 
-  function handleLogout() {
-    localStorage.removeItem("login")
-    navigate("/login", { replace: true })
-  }
   return (
     <Sidebar>
        <SidebarHeader>
@@ -93,7 +96,10 @@ export function AppSidebar() {
         </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter />
+      <Separator />
+      <SidebarFooter>
+        <NavUser user={user} />
+      </SidebarFooter>
     </Sidebar>
   )
 }

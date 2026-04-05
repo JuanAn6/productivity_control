@@ -12,5 +12,6 @@ export default [
     route("notion", "routes/demo/notion.tsx"),
     route("tasks", "routes/demo/tasks.tsx"),
     route("users/list", "routes/users/list_users.tsx"),
+    route("users/edit/:id", "routes/users/form_users.tsx"),
   ]),
 ] satisfies RouteConfig

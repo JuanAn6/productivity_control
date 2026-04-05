@@ -77,8 +77,8 @@ export default function BaseLayout() {
 
   return (
     <div className="min-h-svh w-full">
-      <div className="mx-auto flex min-h-svh w-full flex-col gap-6 px-4 py-6 md:flex-row">
-        <main className="flex-1 space-y-6 flex flex-col w-full">
+      <div className="mx-auto flex min-h-svh w-full flex-col gap-6 px-3 py-3 md:flex-row">
+        <main className="flex-1 space-y-3 flex flex-col w-full">
           <header className="rounded-md border bg-card p-5 shadow-sm flex gap-6">
             <SidebarTrigger />
             <div>

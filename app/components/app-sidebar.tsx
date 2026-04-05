@@ -58,7 +58,13 @@ export function AppSidebar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-[--radix-popper-anchor-width]">
                 <DropdownMenuItem>
-                  <span>Acme Inc</span>
+                  <span>Sales</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span>Marketing</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span>IT</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -73,8 +79,8 @@ export function AppSidebar() {
           {navItems.map((item) => {
             const Icon = item.icon
             return (
-              <SidebarMenuButton>
-                <NavLink key={item.to} to={item.to} className={({ isActive }) =>
+              <SidebarMenuButton key={item.to}>
+                <NavLink to={item.to} className={({ isActive }) =>
                     cn(
                       buttonVariants({
                         variant: isActive ? "secondary" : "ghost",

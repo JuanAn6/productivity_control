@@ -1,58 +1,12 @@
 import { useEffect, useMemo, useState } from "react"
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router"
-import {
-  Calendar,
-  FilePenLine,
-  Home,
-  LayoutGrid,
-  LogOut,
-  Table2,
-  UtensilsCrossed,
-  ListChecks,
-  User
-} from "lucide-react"
-
+import { Calendar, FilePenLine, Home, LayoutGrid, LogOut, Table2, UtensilsCrossed, ListChecks, User } from "lucide-react"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
 import { SidebarTrigger } from "./ui/sidebar"
-
-const navItems = [
-  { label: "Home", to: "/home", icon: Home, description: "Overview" },
-  {
-    label: "Reservations",
-    to: "/reservas",
-    icon: UtensilsCrossed,
-    description: "School dining",
-  },
-  { label: "Table", to: "/tabla", icon: Table2, description: "Data table" },
-  { label: "Cards", to: "/cards", icon: LayoutGrid, description: "Cards" },
-  {
-    label: "Calendar",
-    to: "/calendario",
-    icon: Calendar,
-    description: "Monthly view",
-  },
-  {
-    label: "Notion",
-    to: "/notion",
-    icon: FilePenLine,
-    description: "TipTap editor",
-  },
-  {
-    label: "Tasks",
-    to: "/tasks",
-    icon: ListChecks,
-    description: "Tasks list",
-  },
-  {
-    label: "Users",
-    to: "/users/list",
-    icon: User,
-    description: "Users list",
-  },
-]
+import { ModeToggle } from "@/components/custom/ModeToggle"
 
 export default function BaseLayout() {
   const navigate = useNavigate()
@@ -79,13 +33,14 @@ export default function BaseLayout() {
     <div className="min-h-svh w-full">
       <div className="mx-auto flex min-h-svh w-full flex-col gap-6 px-3 py-3 md:flex-row">
         <main className="flex-1 space-y-3 flex flex-col w-full">
-          <header className="rounded-md border bg-card p-5 shadow-sm flex gap-6">
+          <header className="rounded-md border bg-card px-4 py-2 shadow-sm flex gap-6">
             <SidebarTrigger />
+            <ModeToggle />
             <div>
               {/* TODO:Breadcrumbs */}
             </div>
           </header>
-          <section className=" rounded-md border bg-card p-6 shadow-sm flex-1">
+          <section className=" rounded-md border bg-card px-4 pt-4 py-2 shadow-sm flex-1">
             <Outlet />
           </section>
         </main>

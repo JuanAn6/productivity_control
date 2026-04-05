@@ -107,7 +107,7 @@ export default function UserList() {
                   <DropdownMenuTrigger asChild>
                     <Button variant="outline" size="icon"><EllipsisVerticalIcon/></Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-40" align="start">
+                  <DropdownMenuContent className="w-40" side="left" align="start" >
                     <DropdownMenuGroup>
                       <DropdownMenuLabel>My Account</DropdownMenuLabel>
                       <Link to={`/users/edit/${row.id}`}>

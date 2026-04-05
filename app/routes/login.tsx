@@ -12,6 +12,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
+import { ModeToggle } from "~/components/custom/ModeToggle"
 
 type LoginPayload = {
   email: string
@@ -50,9 +51,7 @@ export default function Login() {
               </CardDescription>
             </div>
             <CardAction>
-              <Button type="button" variant="link">
-                Sign Up
-              </Button>
+              <ModeToggle />
             </CardAction>
           </div>
         </CardHeader>
@@ -104,6 +103,9 @@ export default function Login() {
             </Button>
             <Button className="w-full" type="button" variant="outline">
               Login with Google
+            </Button>
+            <Button type="button" className="w-full" variant="outline">
+              Sign Up
             </Button>
           </CardFooter>
         </form>
